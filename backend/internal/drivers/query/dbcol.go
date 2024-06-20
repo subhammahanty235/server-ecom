@@ -26,3 +26,13 @@ func ShopOwner(db mongo.Client) mongo.Collection {
 	var shopOwners = db.Database("artStoreDev").Collection("shopOwner")
 	return *shopOwners
 }
+
+func Product(db mongo.Client) mongo.Collection {
+	var product = db.Database("artStoreDev").Collection("product")
+	return *product
+}
+
+func RequestTransactions(db mongo.Client) mongo.Collection {
+	var requestTransaction = db.Database("artStoreDev").Collection("requestTransactions")
+	return *requestTransaction
+}

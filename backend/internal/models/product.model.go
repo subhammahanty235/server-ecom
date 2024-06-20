@@ -7,26 +7,30 @@ import (
 )
 
 type BasicDetails struct {
-	Name        string `json:"name" bson:"name"`
-	Brand       string `json:"brand" bson:"brand"`
-	Description string `json:"description" bson:"description"`
+	Name        string    `json:"name" bson:"name"`
+	Brand       string    `json:"brand" bson:"brand"`
+	Description string    `json:"description" bson:"description"`
+	CreatedAt   time.Time `json:"createdAt" bson:"createdAt"`
 }
 
 type ProductImage struct {
-	Image    string `json:"image" bson:"image"`
-	Approved bool   `json:"approved" bson:"approved" Default:"false"`
+	Image     string    `json:"image" bson:"image"`
+	Approved  bool      `json:"approved" bson:"approved" Default:"false"`
+	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
 }
 
 type ProductPrice struct {
-	Price    int    `json:"price"  bson:"price"`
-	Currency string `json:"currency" bson:"currency"`
-	Discount int    `json:"discount" bson:"discount"`
+	Price     int       `json:"price"  bson:"price"`
+	Currency  string    `json:"currency" bson:"currency"`
+	Discount  int       `json:"discount" bson:"discount"`
+	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
 }
 
 type ProductStocks struct {
-	Size  string `json:"size" bson:"size"`
-	Stock int    `json:"stock" bson:"stock"`
-	Price int    `json:"price" bson:"price"`
+	Size      string    `json:"size" bson:"size"`
+	Stock     int       `json:"stock" bson:"stock"`
+	Price     int       `json:"price" bson:"price"`
+	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
 }
 
 type AdminSideData struct {
@@ -34,6 +38,7 @@ type AdminSideData struct {
 	UserId        primitive.ObjectID `json:"userId"`
 	ShopId        primitive.ObjectID `json:"shopId"`
 	Status        int                `json:"status"` // 1---> listed | 2 ---> unlisted by Admin | 3 --> unlisted by owner
+
 }
 
 type DayWiseSales struct {
@@ -42,8 +47,7 @@ type DayWiseSales struct {
 }
 
 type MonthWiseSales struct {
-	Month string `json:"month"`
-
+	Month           string         `json:"month"`
 	DayWiseSaleData []DayWiseSales `json:"dayWiseSalesData"`
 }
 
@@ -67,4 +71,7 @@ type Product struct {
 	ReviewIds         []primitive.ObjectID `json:"reviewIds" bson:"reviewIds"`
 	Rating            Rating               `json:"rating" bson:"rating"` // this review structure is imported from the shop model
 	SalesAnalysisData SalesAnalysisData    `json:"salesAnalysisData" bson:"salesAnalysisData"`
+	TransactionId     primitive.ObjectID   `json:"transactionId"`
+	ProductCode       string               `json:"productCode"`
+	ShopCode          string               `json:"shopCode"`
 }
